@@ -4,11 +4,8 @@ COPY ./redis.conf /usr/local/etc/redis/redis.conf
 
 ARG PORT_CONFIG
 ARG PORT_BUS_CONFIG
-ARG IP
 
 RUN sed -i "s/7000/${PORT_CONFIG}/g" "/usr/local/etc/redis/redis.conf"
 RUN sed -i "s/8000/${PORT_BUS_CONFIG}/g" "/usr/local/etc/redis/redis.conf"
-
-RUN sed -i "s/127.0.0.1/${IP}/g" "/usr/local/etc/redis/redis.conf"
 
 CMD ["redis-server", "/usr/local/etc/redis/redis.conf"]
